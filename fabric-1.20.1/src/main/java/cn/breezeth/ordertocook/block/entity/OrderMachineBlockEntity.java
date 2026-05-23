@@ -374,6 +374,11 @@ public class OrderMachineBlockEntity extends BlockEntity implements NamedScreenH
         ArrayList<Item> list = new ArrayList<>();
         for (ItemStack s : be.getItems()) {
             if (s.isEmpty()) continue;
+            Identifier id = Registries.ITEM.getId(s.getItem());
+            if (BoardBlockEntity.isRtddFoodItem(id)) {
+                list.add(s.getItem());
+                continue;
+            }
             FoodComponent fc = s.getItem().getFoodComponent();
             int nutrition = (fc != null) ? fc.getHunger() : 0;
             if (nutrition <= 0) {

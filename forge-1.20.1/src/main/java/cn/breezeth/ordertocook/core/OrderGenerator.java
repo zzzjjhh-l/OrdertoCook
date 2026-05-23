@@ -1,6 +1,7 @@
 package cn.breezeth.ordertocook.core;
 
 import cn.breezeth.ordertocook.OrderToCookMod;
+import cn.breezeth.ordertocook.block.entity.BoardBlockEntity;
 import cn.breezeth.ordertocook.config.ConfigManager;
 import cn.breezeth.ordertocook.config.ModConfig;
 import cn.breezeth.ordertocook.registry.ModItems;
@@ -303,10 +304,15 @@ public class OrderGenerator {
             ResourceLocation id = ResourceLocation.tryParse(key);
             if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) continue;
             Item item = BuiltInRegistries.ITEM.get(id);
-            FoodProperties fc = item.getFoodProperties();
-            int nutrition = (fc != null) ? fc.getNutrition() : 0;
-            if (nutrition <= 0) {
-                nutrition = ConfigManager.getCustomMenuNutrition(item);
+            int nutrition;
+            if (BoardBlockEntity.isRtddFoodItem(id)) {
+                nutrition = BoardBlockEntity.getRtddNutrition(id);
+            } else {
+                FoodProperties fc = item.getFoodProperties();
+                nutrition = (fc != null) ? fc.getNutrition() : 0;
+                if (nutrition <= 0) {
+                    nutrition = ConfigManager.getCustomMenuNutrition(item);
+                }
             }
             if (nutrition > 0) {
                 sum += nutrition * foodList.getInt(key);

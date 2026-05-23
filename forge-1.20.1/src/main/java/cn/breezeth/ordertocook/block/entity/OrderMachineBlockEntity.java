@@ -372,6 +372,11 @@ public class OrderMachineBlockEntity extends BlockEntity implements MenuProvider
         ArrayList<Item> list = new ArrayList<>();
         for (ItemStack s : be.getItems()) {
             if (s.isEmpty()) continue;
+            ResourceLocation id = BuiltInRegistries.ITEM.getKey(s.getItem());
+            if (BoardBlockEntity.isRtddFoodItem(id)) {
+                list.add(s.getItem());
+                continue;
+            }
             FoodProperties fc = s.getItem().getFoodProperties();
             int nutrition = (fc != null) ? fc.getNutrition() : 0;
             if (nutrition <= 0) {
