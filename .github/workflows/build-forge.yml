@@ -29,7 +29,7 @@ jobs:
 
       - name: Build Forge 1.20.1
         working-directory: forge-1.20.1
-        run: ./gradlew build --no-daemon
+        run: bash gradlew build --no-daemon
 
       - name: Upload Forge jar
         uses: actions/upload-artifact@v4
