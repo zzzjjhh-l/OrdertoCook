@@ -1,7 +1,9 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.fabricmc.net/' }
+        maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
         mavenCentral()
+        maven { url = 'https://maven.fabricmc.net/' }
     }
 }
 
@@ -17,6 +19,9 @@ subprojects { Project sub ->
     }
 
     repositories {
+        maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
         maven {
             url = 'https://maven.minecraftforge.net/'
             content {
@@ -31,8 +36,5 @@ subprojects { Project sub ->
                 excludeGroup 'remapped.mezz.jei'
             }
         }
-        mavenCentral()
-        maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
-        maven { url = 'https://maven.aliyun.com/repository/public' }
     }
 }

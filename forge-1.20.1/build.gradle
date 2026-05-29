@@ -15,12 +15,12 @@ base {
 }
 
 repositories {
+    maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
+    maven { url = 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
     maven { name = 'MinecraftForge'; url = 'https://maven.minecraftforge.net/' }
     maven { name = 'GeckoLib'; url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven { name = 'BlameJared'; url = 'https://maven.blamejared.com' }
-    mavenCentral()
-    maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
-    maven { url = 'https://maven.aliyun.com/repository/public' }
 }
 
 sourceSets {
