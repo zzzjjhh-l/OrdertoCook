@@ -313,8 +313,10 @@ public class BoardBlockEntity extends BlockEntity implements MenuProvider, Imple
 
     public static boolean isRtddFoodItem(ResourceLocation id) {
         if (id == null) return false;
+        String namespace = id.getNamespace();
         String path = id.getPath();
-        if (!path.startsWith("rtdd")) return false;
+        boolean isRtdd = namespace.equals("rtdd") || path.startsWith("rtdd");
+        if (!isRtdd) return false;
         for (String keyword : RTDD_FOOD_KEYWORDS) {
             if (path.contains(keyword)) {
                 return true;
