@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
         maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
         maven { url = 'https://maven.aliyun.com/repository/public' }
         mavenCentral()
@@ -12,6 +13,7 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
+        maven { url = 'https://repo.huaweicloud.com/repository/maven/' }
         maven { url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
         maven { url = 'https://maven.aliyun.com/repository/public' }
         mavenCentral()
