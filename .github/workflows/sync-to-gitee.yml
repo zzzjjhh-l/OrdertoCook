@@ -1,0 +1,19 @@
+name: 同步到 Gitee
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 同步到 Gitee
+        uses: wearerequired/git-mirror-action@v1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_SSH_KEY }}
+        with:
+          source-repo: 'https://github.com/zzzjjhh-l/OrdertoCook.git'
+          destination-repo: 'git@gitee.com:zzzjjhh-l/OrdertoCook.git'
